@@ -1,0 +1,27 @@
+{
+  "name": "utf-benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx node-gyp build --release",
+    "ascii": "node index.js gsoc-2018",
+    "ascii-decoded": "node index.js gsoc-2018-decoded",
+    "utf": "node index.js twitter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maximelkin/utf-benchmark.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/maximelkin/utf-benchmark/issues"
+  },
+  "homepage": "https://github.com/maximelkin/utf-benchmark#readme",
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "bindings": "^1.5.0",
+    "node-addon-api": "^5.0.0"
+  },
+  "gypfile": true
+}
