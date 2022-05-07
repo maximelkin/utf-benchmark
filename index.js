@@ -21,7 +21,7 @@ function runJSON(cb) {
         .add('JSON.parse(data)', function () {
             JSON.parse(strData);
         })
-        .add('JSON.parse(data.toString(\'utf8\'))', function () {
+        .add('JSON.parse(buffer.toString(\'utf8\'))', function () {
             JSON.parse(buffer.toString('utf8'));
         })
         .add('JSON.parse(native.decode(buffer))', function () {
@@ -45,7 +45,7 @@ function runJSON(cb) {
 function runDecode(cb) {
     const suite = new Benchmark.Suite;
     suite
-        .add('data.toString(\'utf8\')', function () {
+        .add('buffer.toString(\'utf8\')', function () {
             buffer.toString('utf8');
         })
         .add('native.decode(buffer)', function () {

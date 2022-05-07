@@ -3,7 +3,7 @@
 ## Credits
 
 This benchmark uses code from https://github.com/simdutf/simdutf
-You could find it in src/external/ directory
+You could find it in src/simd/ directory
 
 
 ## running
@@ -21,7 +21,7 @@ $ npm run utf
 > node index.js twitter
 
 JSON.parse(data) x 638 ops/sec ±0.39% (91 runs sampled)
-JSON.parse(data.toString('utf8')) x 332 ops/sec ±0.87% (86 runs sampled)
+JSON.parse(buffer.toString('utf8')) x 332 ops/sec ±0.87% (86 runs sampled)
 JSON.parse(native.decode(buffer)) x 348 ops/sec ±0.33% (88 runs sampled)
 JSON.parse(native.decodeSimd(buffer)) x 522 ops/sec ±0.84% (89 runs sampled)
 Fastest is JSON.parse(data)
@@ -37,7 +37,7 @@ $ npm run ascii
 > node index.js gsoc-2018
 
 JSON.parse(data) x 215 ops/sec ±0.94% (84 runs sampled)
-JSON.parse(data.toString('utf8')) x 162 ops/sec ±0.75% (83 runs sampled)
+JSON.parse(buffer.toString('utf8')) x 162 ops/sec ±0.75% (83 runs sampled)
 JSON.parse(native.decode(buffer)) x 174 ops/sec ±0.49% (88 runs sampled)
 JSON.parse(native.decodeSimd(buffer)) x 171 ops/sec ±0.45% (84 runs sampled)
 Fastest is JSON.parse(data)
@@ -54,7 +54,7 @@ $ npm run ascii-decoded
 > node index.js gsoc-2018-decoded
 
 JSON.parse(data) x 160 ops/sec ±1.39% (81 runs sampled)
-JSON.parse(data.toString('utf8')) x 71.81 ops/sec ±1.05% (74 runs sampled)
+JSON.parse(buffer.toString('utf8')) x 71.81 ops/sec ±1.05% (74 runs sampled)
 JSON.parse(native.decode(buffer)) x 76.08 ops/sec ±0.49% (78 runs sampled)
 JSON.parse(native.decodeSimd(buffer)) x 117 ops/sec ±0.23% (74 runs sampled)
 Fastest is JSON.parse(data)
