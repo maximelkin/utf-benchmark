@@ -1,5 +1,5 @@
 #include <napi.h>
-#include "external/simdutf.cpp"
+#include "simdutf/simdutf.cpp"
 #include <node_api.h>
 #include <memory>
 
@@ -26,8 +26,6 @@ Napi::Value DecodeSimd(const Napi::CallbackInfo &info) {
   }
   auto buf = info[0].As < Napi::Buffer < char >> ();
 
-
-  // TBD: test with https://github.com/ydb-platform/ydb/blob/967aa79abe2a9ad71aa7e4f773ccbb9bc8fc076f/util/charset/wide.h#L561
   size_t expected_utf16words = simdutf::utf16_length_from_utf8(buf.Data(), buf.Length());
 
   if (expected_utf16words == buf.Length()) {
