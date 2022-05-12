@@ -26,6 +26,12 @@ Napi::Value DecodeSimd(const Napi::CallbackInfo &info) {
   }
   auto buf = info[0].As < Napi::Buffer < char >> ();
 
+  bool is_valid = simdutf::validate_utf8(buf.Data(), buf.Length());
+  if (!is_valid) {
+    // give it to v8 instead, they knows better what to do for invalid strings
+    return Napi::String::New(env, buf.Data(), buf.Length());
+  }
+
   size_t expected_utf16words = simdutf::utf16_length_from_utf8(buf.Data(), buf.Length());
 
   if (expected_utf16words == buf.Length()) {
@@ -45,6 +51,13 @@ Napi::Value DecodeSimd(const Napi::CallbackInfo &info) {
   std::unique_ptr < char16_t[] > utf16_output{new char16_t[expected_utf16words]};
 
   size_t utf16words = simdutf::convert_utf8_to_utf16(buf.Data(), buf.Length(), utf16_output.get());
+
+  if (utf16words != expected_utf16words) {
+    printf("lengths: expected %lu != actual %lu\n", expected_utf16words, utf16words);
+    Napi::TypeError::New(env, "create string failed")
+            .ThrowAsJavaScriptException();
+    return env.Null();
+  }
 
   napi_value result;
   auto status = napi_create_string_utf16(env, utf16_output.get(), utf16words, &result);
