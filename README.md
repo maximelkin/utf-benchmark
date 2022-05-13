@@ -20,14 +20,16 @@ $ npm run utf
 > utf-benchmark@1.0.0 utf
 > node index.js twitter
 
-JSON.parse(data) x 715 ops/sec ±0.77% (92 runs sampled)
-JSON.parse(buffer.toString('utf8')) x 365 ops/sec ±1.16% (86 runs sampled)
-JSON.parse(native.decode(buffer)) x 360 ops/sec ±1.31% (84 runs sampled)
-JSON.parse(native.decodeSimd(buffer)) x 533 ops/sec ±1.37% (88 runs sampled)
+JSON.parse(data) x 675 ops/sec ±0.52% (94 runs sampled)
+JSON.parse(buffer.toString('utf8')) x 356 ops/sec ±0.51% (90 runs sampled)
+JSON.parse(native.decode(buffer)) x 362 ops/sec ±0.36% (90 runs sampled)
+JSON.parse(native.decodeSimd(buffer)) x 521 ops/sec ±0.74% (88 runs sampled)
+JSON.parse(textDecoder.decode(buffer)) x 426 ops/sec ±1.76% (89 runs sampled)
 Fastest is JSON.parse(data)
-buffer.toString('utf8') x 757 ops/sec ±1.50% (83 runs sampled)
-native.decode(buffer) x 734 ops/sec ±1.62% (85 runs sampled)
-native.decodeSimd(buffer) x 2,611 ops/sec ±1.55% (80 runs sampled)
+buffer.toString('utf8') x 740 ops/sec ±1.65% (85 runs sampled)
+native.decode(buffer) x 747 ops/sec ±1.62% (87 runs sampled)
+native.decodeSimd(buffer) x 2,432 ops/sec ±1.79% (83 runs sampled)
+textDecoder.decode(buffer) x 1,164 ops/sec ±1.59% (83 runs sampled)
 Fastest is native.decodeSimd(buffer)
 ```
 
@@ -36,15 +38,17 @@ $ npm run ascii
 > utf-benchmark@1.0.0 ascii
 > node index.js gsoc-2018
 
-JSON.parse(data) x 250 ops/sec ±0.71% (90 runs sampled)
-JSON.parse(buffer.toString('utf8')) x 193 ops/sec ±0.74% (80 runs sampled)
-JSON.parse(native.decode(buffer)) x 192 ops/sec ±0.68% (80 runs sampled)
-JSON.parse(native.decodeSimd(buffer)) x 192 ops/sec ±0.61% (81 runs sampled)
+JSON.parse(data) x 244 ops/sec ±1.22% (85 runs sampled)
+JSON.parse(buffer.toString('utf8')) x 187 ops/sec ±1.15% (76 runs sampled)
+JSON.parse(native.decode(buffer)) x 190 ops/sec ±0.76% (86 runs sampled)
+JSON.parse(native.decodeSimd(buffer)) x 189 ops/sec ±0.84% (85 runs sampled)
+JSON.parse(textDecoder.decode(buffer)) x 93.55 ops/sec ±1.44% (67 runs sampled)
 Fastest is JSON.parse(data)
-buffer.toString('utf8') x 974 ops/sec ±0.83% (94 runs sampled)
-native.decode(buffer) x 1,000 ops/sec ±0.67% (95 runs sampled)
-native.decodeSimd(buffer) x 998 ops/sec ±0.22% (96 runs sampled)
-Fastest is native.decodeSimd(buffer)
+buffer.toString('utf8') x 961 ops/sec ±1.45% (90 runs sampled)
+native.decode(buffer) x 975 ops/sec ±0.82% (93 runs sampled)
+native.decodeSimd(buffer) x 914 ops/sec ±0.75% (95 runs sampled)
+textDecoder.decode(buffer) x 337 ops/sec ±1.85% (90 runs sampled)
+Fastest is native.decode(buffer)
 
 ```
 
@@ -53,13 +57,15 @@ $ npm run ascii-decoded
 > utf-benchmark@1.0.0 ascii-decoded
 > node index.js gsoc-2018-decoded
 
-JSON.parse(data) x 146 ops/sec ±0.78% (78 runs sampled)
-JSON.parse(buffer.toString('utf8')) x 79.61 ops/sec ±0.34% (68 runs sampled)
-JSON.parse(native.decode(buffer)) x 78.77 ops/sec ±0.69% (68 runs sampled)
-JSON.parse(native.decodeSimd(buffer)) x 109 ops/sec ±0.77% (80 runs sampled)
+JSON.parse(data) x 148 ops/sec ±0.78% (79 runs sampled)
+JSON.parse(buffer.toString('utf8')) x 79.27 ops/sec ±0.49% (69 runs sampled)
+JSON.parse(native.decode(buffer)) x 79.32 ops/sec ±0.60% (69 runs sampled)
+JSON.parse(native.decodeSimd(buffer)) x 110 ops/sec ±0.42% (80 runs sampled)
+JSON.parse(textDecoder.decode(buffer)) x 100.00 ops/sec ±1.13% (72 runs sampled)
 Fastest is JSON.parse(data)
-buffer.toString('utf8') x 161 ops/sec ±0.68% (81 runs sampled)
-native.decode(buffer) x 161 ops/sec ±0.32% (82 runs sampled)
-native.decodeSimd(buffer) x 397 ops/sec ±0.54% (87 runs sampled)
+buffer.toString('utf8') x 167 ops/sec ±0.55% (84 runs sampled)
+native.decode(buffer) x 169 ops/sec ±0.46% (85 runs sampled)
+native.decodeSimd(buffer) x 403 ops/sec ±0.70% (92 runs sampled)
+textDecoder.decode(buffer) x 339 ops/sec ±1.91% (81 runs sampled)
 Fastest is native.decodeSimd(buffer)
 ```

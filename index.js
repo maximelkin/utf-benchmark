@@ -15,6 +15,8 @@ assert.deepEqual(JSON.parse(native.decode(buffer)), JSON.parse(strData));
 assert.deepEqual(native.decodeSimd(buffer), strData);
 assert.deepEqual(JSON.parse(native.decodeSimd(buffer)), JSON.parse(strData));
 
+const textDecoder = new TextDecoder();
+
 function runJSON(cb) {
     const suite = new Benchmark.Suite;
     suite
@@ -29,6 +31,9 @@ function runJSON(cb) {
         })
         .add('JSON.parse(native.decodeSimd(buffer))', function () {
             JSON.parse(native.decodeSimd(buffer));
+        })
+        .add('JSON.parse(textDecoder.decode(buffer))', function () {
+            JSON.parse(textDecoder.decode(buffer));
         })
         .on('cycle', function (event) {
             console.log(String(event.target));
@@ -53,6 +58,9 @@ function runDecode(cb) {
         })
         .add('native.decodeSimd(buffer)', function () {
             native.decodeSimd(buffer);
+        })
+        .add('textDecoder.decode(buffer)', function () {
+            textDecoder.decode(buffer);
         })
         .on('cycle', function (event) {
             console.log(String(event.target));
