@@ -16,6 +16,12 @@ npm run build
 
 All examples run with nodejs v18.1.0 on Linux
 
+Notes:
+1) as you can see, parsing is around 1-2 ms for big input like 450kb (+ same amount for utf decode)
+2) `JSON.parse(data)` will be faster in all cases, because it parse data without decoding buffer -> string
+3) `decodeSimd` does some excess work for checking is string valid and fallbacks to simple decode, because idk how v8 actually reacts on that
+4) if you have ASCII-only input, just use `buffer.toString('ascii')`
+
 Size: 456kb
 ```
 $ npm run utf
