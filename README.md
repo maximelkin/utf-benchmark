@@ -14,7 +14,7 @@ npm run build
 
 `ascii` example is not giving much, because non-ascii symbols are encoded like that `\u201d`
 
-All examples run with nodejs v18.0.0 on Linux
+All examples run with nodejs v18.1.0 on Linux
 ```
 $ npm run utf
 > utf-benchmark@1.0.0 utf
