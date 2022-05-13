@@ -15,6 +15,8 @@ npm run build
 `ascii` example is not giving much, because non-ascii symbols are encoded like that `\u201d`
 
 All examples run with nodejs v18.1.0 on Linux
+
+Size: 456kb
 ```
 $ npm run utf
 > utf-benchmark@1.0.0 utf
@@ -33,6 +35,7 @@ textDecoder.decode(buffer) x 1,164 ops/sec ±1.59% (83 runs sampled)
 Fastest is native.decodeSimd(buffer)
 ```
 
+Size: 3.2mb
 ```
 $ npm run ascii
 > utf-benchmark@1.0.0 ascii
@@ -52,6 +55,7 @@ Fastest is native.decode(buffer)
 
 ```
 
+Size: 3mb
 ```
 $ npm run ascii-decoded
 > utf-benchmark@1.0.0 ascii-decoded
